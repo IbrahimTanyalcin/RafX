@@ -31,7 +31,7 @@ before_install:
 install:
   - npm install
   - npm install puppeteer
-  - yarn add --dev jest-puppeteer
-  - yarn add puppeteer
+  # - yarn add --dev jest-puppeteer
+  # - yarn add puppeteer
 script:
   - npm run testCI

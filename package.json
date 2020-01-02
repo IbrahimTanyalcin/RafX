@@ -1,0 +1,59 @@
+{
+  "name": "RafX",
+  "version": "0.0.0",
+  "description": "RequestAnimationFrame (rAF) Based Promise-Like Implementation",
+  "main": "./dist/rafx.js",
+  "scripts": {
+    "min": "cross-env-shell uglifyjs ./dist/rafx.v${npm_package_version}.lint.js -o ./dist/rafx.v${npm_package_version}.min.js",
+    "testLintBand": "cross-env-shell RAFX_TYPE=lint jest --runInBand",
+	"testLintCI": "cross-env-shell RAFX_TYPE=lint jest --ci",
+	"testLint": "cross-env-shell RAFX_TYPE=lint jest",
+    "testDevBand": "cross-env-shell RAFX_TYPE=dev jest --runInBand",
+	"testDevCI": "cross-env-shell RAFX_TYPE=dev jest --ci",
+	"testDev": "cross-env-shell RAFX_TYPE=dev jest",
+    "testMinBand": "cross-env-shell RAFX_TYPE=min jest --runInBand",
+	"testMinCI": "cross-env-shell RAFX_TYPE=min jest --ci",
+	"testMin": "cross-env-shell RAFX_TYPE=min jest",
+	"testCI": "npm run testDevCI && npm run testLintCI && npm run testMinCI",
+    "testBand": "npm run testDevBand && npm run testLintBand && npm run testMinBand",
+	"test": "npm run testDev && npm run testLint && npm run testMin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IbrahimTanyalcin/RafX.git"
+  },
+  "keywords": [
+    "requestAnimationFrame",
+	"RequestAnimationFrame",
+	"rAF",
+    "Promise",
+    "Thenable",
+	"Animation",
+	"Async",
+	"Asynchronous",
+	"Timing"
+  ],
+  "author": "Ibrahim Tanyalcin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IbrahimTanyalcin/RafX/issues"
+  },
+  "homepage": "https://github.com/IbrahimTanyalcin/RafX#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-airbnb-es5": "^1.2.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-react": "^7.17.0",
+    "jest": "^24.9.0",
+    "jest-puppeteer": "^4.3.0",
+    "js-beautify": "^1.10.2",
+    "puppeteer": "^1.20.0",
+    "uglify-js": "^3.7.2"
+  },
+  "jest": {
+    "globalSetup": "./src/globalSetup.js"
+  }
+}

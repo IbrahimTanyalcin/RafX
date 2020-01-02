@@ -15,7 +15,7 @@ node_js:
   - "12.13.0"
 env:
   global:
-    - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=false
+    - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=0
 # allow headful tests
 before_install:
   # Enable user namespace cloning
@@ -30,7 +30,7 @@ before_install:
   # - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 install:
   - npm install
-  - npm install puppeteer
+  - npm install -g puppeteer --unsafe-perm=true --allow-root
   # - yarn add --dev jest-puppeteer
   # - yarn add puppeteer
 script:

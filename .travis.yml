@@ -19,9 +19,12 @@ before_install:
   - "sysctl kernel.unprivileged_userns_clone=1"
   # Launch XVFB
   - "export DISPLAY=:99.0"
+  - export CHROME_PATH="$(pwd)/chrome-linux/chrome"
   - "sh -e /etc/init.d/xvfb start"
+  # wait for xvfb to boot 
+  - sleep 3 
   # start your web application and listen on `localhost`
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  # - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 install:
   - npm i
 script:

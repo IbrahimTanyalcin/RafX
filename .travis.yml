@@ -12,7 +12,7 @@ node_js:
   - "10.15.3"
 env:
   global:
-    - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+    - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=false
 # allow headful tests
 before_install:
   # Enable user namespace cloning

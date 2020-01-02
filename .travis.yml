@@ -14,8 +14,8 @@ sudo: required
 node_js:
   - "12.13.0"
 env:
-  global:
-    - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=0
+  #global:
+  #  - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=0
 # allow headful tests
 before_install:
   # Enable user namespace cloning

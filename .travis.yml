@@ -1,7 +1,10 @@
 language: node_js
 dist: trusty
 addons:
-  chrome: stable
+  apt:
+    packages:
+      # This is required to run new chrome on old trusty
+      - libnss3
 notifications:
   email: false
 cache:
@@ -19,7 +22,7 @@ before_install:
   - "sysctl kernel.unprivileged_userns_clone=1"
   # Launch XVFB
   - "export DISPLAY=:99.0"
-  - export CHROME_PATH="$(pwd)/chrome-linux/chrome"
+  # - export CHROME_PATH="$(pwd)/chrome-linux/chrome"
   - "sh -e /etc/init.d/xvfb start"
   # wait for xvfb to boot 
   - sleep 3 

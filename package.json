@@ -1,6 +1,6 @@
 {
   "name": "rafx",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "RequestAnimationFrame (rAF) Based Promise-Like Implementation",
   "main": "./dist/rafx.v*.*.*.dev.js",
   "scripts": {
@@ -17,7 +17,9 @@
     "testCI": "npm run testDevCI && npm run testMinCI",
     "testBand": "npm run testDevBand && npm run testLintBand && npm run testMinBand",
     "test": "npm run testDev && npm run testMin",
-    "publishPatch": "cross-env-shell npm version patch -no-git-tag-version --force && npm run min && git add -A && cross-env-shell git commit -m ${npm_package_version} && cross-env-shell git tag ${npm_package_version} && git push && git push --tags && npm publish"
+    "bumpPatch": "cross-env-shell npm version patch -no-git-tag-version --force",
+    "setGit": "git add -A && cross-env-shell git commit -m ${npm_package_version} && cross-env-shell git tag ${npm_package_version} && git push && git push --tags",
+    "publishPatch": "npm run bumpPatch && npm run min && npm run setGit && npm publish"
   },
   "repository": {
     "type": "git",

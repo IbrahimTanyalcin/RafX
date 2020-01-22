@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<style>
+			html {
+				min-width: 100vw;
+				min-height: 100vh;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			body {
+				margin:0px;
+				display:flex;
+				flex-flow: row wrap;
+				min-width: 100vw;
+				min-height: 100vh;
+				align-items: center;
+				justify-content: center;
+				/*overflow-x:hidden;*/
+				background:#f5f9fa;
+			}
+			.panel {
+				margin:0px;
+				display:block;
+				width: 200px;
+				height: 200px;
+				background: transparent;
+				position:static;
+				transform: translate(0px,0px);
+			}
+		</style>
+		<script src="../../dist/rafx.v0.0.1.dev.js"></script>
+	</head>
+	<body>
+		<div id="panel" class="panel">
+		</div>
+	</body>
+	<script>
+		!function(){
+			function createColor(){
+				return "#" + ("000000" + (~~(0xfffffff * Math.random())).toString(16)).slice(-6);
+			}
+			function addNodes(){
+				const panel = document.getElementById("panel"),
+					  div = document.createElement("div"),
+					  sty = div.style;
+				sty.width = "10px";
+				sty.height = "10px";
+				sty.opacity = 0.5;
+				sty.position = "absolute";
+				div.className = "boxes";
+				return Array.from(Array(2000))
+						.map(()=>{
+							const node = div.cloneNode(true);
+							node.__X = Math.random() * 50 - 25;
+							node._X = node.__X;
+							node.__Y = Math.random() * 50 - 25;
+							node._Y = node.__Y;
+							node.style.backgroundColor = createColor();
+							panel.appendChild(node);
+							return node;
+						});
+			};
+			function moveBox(thenable){
+				var o = {
+					thenable: thenable,
+					moveBox: function (direction){
+						o.thenable = o.thenable
+						.animate(
+							function(node,ledger){
+								++ledger.start;
+								const t = Math.min(1,ledger.start/ledger.end);
+								switch(direction){
+									case "right":
+										node._X = node.__X + t * 200;
+										break;
+									case "down": 
+										node._Y = node.__Y + t * 200;
+										break;
+									case "left": 
+										node._X = node.__X + (1 - t) * 200;
+										break;
+									case "up": 
+										node._Y = node.__Y + (1 - t) * 200;
+										break;
+								}
+								node.style.transform = "translate(" + node._X + "px," + node._Y + "px)";
+								return node;
+							},
+							{
+								end:~~(+rafx.duration(500 + ~~(Math.random() * 750) + "ms")),
+								start: 0
+							}
+						)
+						.until(function(node,ledger){
+							return ledger.start >= ledger.end;
+						});
+						return o.moveBox;
+					}
+				};
+				o.moveBox.thenable = function(){
+					return o.thenable;
+				};
+				return o.moveBox;
+			};
+			function animate (nodes){
+				rafx.async(nodes)
+				.then(function(nodes){
+					const l = nodes.length;
+					const retVal = {value:0,done:false};
+					for(let i = 0,thenable = null; i < l; ++i) {
+						moveBox(
+							rafx.async(nodes[i])
+								.skipFrames(~~(Math.random() * 120))
+						)
+						("right")
+						("down")
+						("left")
+						("up")
+						.thenable()
+						.then(function(){
+						   if (++retVal.value === l){
+								retVal.done = true;
+							}; 
+						  
+						})
+					}
+					return retVal;
+				}).then(function(){
+					animate(nodes);
+				});
+			};
+			animate(addNodes());
+		}();
+	</script>
+</html>

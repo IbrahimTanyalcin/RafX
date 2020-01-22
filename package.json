@@ -17,7 +17,7 @@
     "testCI": "npm run testDevCI && npm run testMinCI",
     "testBand": "npm run testDevBand && npm run testLintBand && npm run testMinBand",
     "test": "npm run testDev && npm run testMin",
-    "publishPatch": "npm version patch -no-git-tag-version --force && npm run min && git commit -am ${npm_package_version} && git tag ${npm_package_version} && git push && git push --tags && npm publish"
+    "publishPatch": "cross-env-shell npm version patch -no-git-tag-version --force && npm run min && git add -A && git commit -m ${npm_package_version} && git tag ${npm_package_version} && git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",

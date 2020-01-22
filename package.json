@@ -1,8 +1,8 @@
 {
-  "name": "RafX",
-  "version": "0.0.1",
+  "name": "rafx",
+  "version": "0.0.2",
   "description": "RequestAnimationFrame (rAF) Based Promise-Like Implementation",
-  "main": "./dist/rafx.v0.0.1.dev.js",
+  "main": "./dist/rafx.v*.*.*.dev.js",
   "scripts": {
     "min": "cross-env-shell uglifyjs ./dist/rafx.v${npm_package_version}.dev.js -o ./dist/rafx.v${npm_package_version}.min.js",
     "testLintBand": "cross-env-shell RAFX_TYPE=lint jest --runInBand",
@@ -17,7 +17,7 @@
     "testCI": "npm run testDevCI && npm run testMinCI",
     "testBand": "npm run testDevBand && npm run testLintBand && npm run testMinBand",
     "test": "npm run testDev && npm run testMin",
-    "publishPatch": "cross-env-shell npm version patch -no-git-tag-version --force && npm run min && git add -A && git commit -m ${npm_package_version} && git tag ${npm_package_version} && git push && git push --tags && npm publish"
+    "publishPatch": "cross-env-shell npm version patch -no-git-tag-version --force && npm run min && git add -A && cross-env-shell git commit -m ${npm_package_version} && cross-env-shell git tag ${npm_package_version} && git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",

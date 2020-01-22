@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<style>
+			html {
+				min-width: 100vw;
+				min-height: 100vh;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			body {
+				margin:0px;
+				display:flex;
+				flex-flow: row wrap;
+				min-width: 100vw;
+				min-height: 100vh;
+				align-items: center;
+				justify-content: center;
+				/*overflow-x:hidden;*/
+				background:#f5f9fa;
+			}
+			.panel {
+				margin:0px;
+				display:block;
+				width: 200px;
+				height: 200px;
+				background: transparent;
+				position:static;
+				transform: translate(0px,0px);
+			}
+		</style>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+	</head>
+	<body>
+		<div id="panel" class="panel">
+		</div>
+	</body>
+	<script>
+		!function(){
+			const nodeCount = 2000;
+			function createColor(){
+				return "#" + ("000000" + (~~(0xfffffff * Math.random())).toString(16)).slice(-6);
+			}
+			function addNodes(){
+				return Array.from(Array(nodeCount))
+						.map(()=>{
+							const __X = Math.random() * 50 - 25,
+								  __Y = Math.random() * 50 - 25;
+							return {
+								__X: __X,
+								 _X: __X,
+								__Y: __Y,
+								 _Y: __Y,
+								color: createColor()
+							};
+						});
+			};
+			function animate(selection){
+				var count = {value:0};
+				moveBox(
+					selection
+					.transition("main")
+					.delay(() => Math.random() * 2000)
+					.duration(0)
+				)
+				("right")
+				("down")
+				("left")
+				("up")
+				.transition()
+				.on("end",function(){
+					if ( ++count.value === nodeCount) {
+						animate(selection);
+					}
+				})
+			};
+			function moveBox(transition){
+				var o = {
+					transition: transition,
+					moveBox: function (direction){
+						o.transition = o.transition
+						.transition(createColor())
+						.ease(d3.easeLinear)
+						.duration(() => 500 + Math.random() * 750)
+						.styleTween("transform",function(d){
+							return function(t){
+								switch(direction){
+									case "right":
+										this._X = this.__X + t * 200;
+										break;
+									case "down": 
+										this._Y = this.__Y + t * 200;
+										break;
+									case "left": 
+										this._X = this.__X + (1 - t) * 200;
+										break;
+									case "up": 
+										this._Y = this.__Y + (1 - t) * 200;
+										break;
+								}
+								return "translate(" + this._X + "px," + this._Y + "px)";
+							}
+						})
+						return o.moveBox;
+					}
+				};
+				o.moveBox.transition = function(){
+					return o.transition;
+				};
+				return o.moveBox;
+			};
+			
+			d3.select("#panel")
+			.selectAll(".boxes")
+			.data(addNodes())
+			.enter()
+			.append("div")
+			.property("__X",(d) => d.__X)
+			.property("_X",(d) => d._X)
+			.property("__Y",(d) => d.__Y)
+			.property("_Y",(d) => d._Y)
+			.style("background-color",(d) => d.color)
+			.style("width","10px")
+			.style("height","10px")
+			.style("opacity",0.5)
+			.style("position","absolute")
+			.attr("class","boxes")
+			.call(animate);
+		}();
+	</script>
+</html>

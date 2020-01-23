@@ -1,6 +1,6 @@
 {
   "name": "rafx",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "RequestAnimationFrame (rAF) Based Promise-Like Implementation",
   "main": "./dist/rafx.v*.*.*.dev.js",
   "scripts": {

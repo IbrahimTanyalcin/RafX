@@ -211,7 +211,7 @@
 			text: {
 				enumerable: false,
 				configurable: false,
-				get: function(){return this.isCompleted ? "completed" : this._invoked ? "pending" : "idle";}
+				get: function(){return this.isCompleted ? "completed" : this.thenable._invoked ? "pending" : "idle";}
 			},
 			valueOf: {
 				enumerable: false,
@@ -372,7 +372,7 @@
 	############ASYNC##############
 	###############################
 	*/
-	prt.version = "0.0.4";
+	prt.version = "0.0.5";
 	prt.skipFrames = function(nFrames,argObj,parent,catcher,_breaker){
 		_breaker = breaker || _breaker || {value:false};
 		nFrames = nFrames instanceof this.skipFrames.Timer ? nFrames : new this.skipFrames.Timer(nFrames);

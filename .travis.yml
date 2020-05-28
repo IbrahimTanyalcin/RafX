@@ -18,7 +18,7 @@ env:
   #  - PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=0
 # allow headful tests
 before_install:
-  - node node_modules/puppeteer/install.js
+  ###- node node_modules/puppeteer/install.js
   # Enable user namespace cloning
   - "sysctl kernel.unprivileged_userns_clone=1"
   # Launch XVFB

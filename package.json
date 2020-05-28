@@ -1,6 +1,6 @@
 {
   "name": "rafx",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "RequestAnimationFrame (rAF) Based Promise-Like Implementation",
   "main": "./dist/rafx.v*.*.*.dev.js",
   "scripts": {
@@ -18,7 +18,12 @@
     "testBand": "npm run testDevBand && npm run testLintBand && npm run testMinBand",
     "test": "npm run testDev && npm run testMin",
     "bumpPatch": "cross-env-shell npm version patch -no-git-tag-version --force",
-    "setGit": "git add -A && cross-env-shell git commit -m ${npm_package_version} && cross-env-shell git tag ${npm_package_version} && git push && git push --tags",
+    "gitCommit": "cross-env-shell git commit -m ${npm_package_version}",
+    "gitTag": "cross-env-shell git tag ${npm_package_version}",
+    "gitAddAll": "git add -A",
+    "gitPush": "git push",
+    "gitPushTags": "git push --tags",
+    "setGit": "npm run gitAddAll && npm run gitCommit && npm run gitTag && npm run gitPush && npm run gitPushTags",
     "publishPatch": "npm run bumpPatch && npm run min && npm run setGit && npm publish"
   },
   "repository": {
@@ -43,20 +48,21 @@
   },
   "homepage": "https://github.com/IbrahimTanyalcin/RafX#readme",
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
+    "babel-eslint": "^10.1.0",
     "cross-env": "^6.0.3",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-airbnb-es5": "^1.2.0",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-react": "^7.20.0",
     "jest": "^24.9.0",
-    "jest-puppeteer": "^4.3.0",
-    "js-beautify": "^1.10.2",
+    "jest-puppeteer": "^4.4.0",
+    "js-beautify": "^1.11.0",
     "puppeteer": "^1.20.0",
-    "uglify-js": "^3.7.2"
+    "uglify-js": "^3.9.4"
   },
   "jest": {
     "globalSetup": "./src/globalSetup.js"
-  }
+  },
+  "dependencies": {}
 }

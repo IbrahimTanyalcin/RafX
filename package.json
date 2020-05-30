@@ -1,8 +1,8 @@
 {
   "name": "rafx",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "RequestAnimationFrame (rAF) Based Promise-Like Implementation",
-  "main": "./dist/rafx.v*.*.*.dev.js",
+  "main": "./dist/rafx.v0.0.7.min.js",
   "scripts": {
     "min": "cross-env-shell uglifyjs ./dist/rafx.v${npm_package_version}.dev.js -o ./dist/rafx.v${npm_package_version}.min.js",
     "testLintBand": "cross-env-shell RAFX_TYPE=lint jest --runInBand",
@@ -17,6 +17,11 @@
     "testCI": "npm run testDevCI && npm run testMinCI",
     "testBand": "npm run testDevBand && npm run testLintBand && npm run testMinBand",
     "test": "npm run testDev && npm run testMin",
+    "updatePckgJSON": "cross-env-shell CUSTOM_LOC=./ node ./src/util/updatePckgJSON.js",
+    "updateMain": "cross-env-shell CUSTOM_LOC=./dist/ node ./src/util/updateMain.js",
+    "updatePerf": "cross-env-shell CUSTOM_LOC=./src/perf/ node ./src/util/updatePerf.js",
+    "backUpFiles": "cross-env-shell CUSTOM_LOC=./dist/ CUSTOM_DEST=./olderVersions node ./src/util/backUpFiles.js",
+    "cleanUp": "cross-env-shell CUSTOM_LOC=./dist/ node ./src/util/cleanUp.js",
     "bumpPatch": "cross-env-shell npm version patch -no-git-tag-version --force",
     "gitCommit": "cross-env-shell git commit -m ${npm_package_version}",
     "gitTag": "cross-env-shell git tag ${npm_package_version}",
@@ -24,7 +29,7 @@
     "gitPush": "git push",
     "gitPushTags": "git push --tags",
     "setGit": "npm run gitAddAll && npm run gitCommit && npm run gitTag && npm run gitPush && npm run gitPushTags",
-    "publishPatch": "npm run bumpPatch && npm run min && npm run setGit && npm publish"
+    "publishPatch": "npm run bumpPatch && npm run backUpFiles && npm run cleanUp && npm run updateMain && npm run min && npm run updatePckgJSON && npm run updatePerf && npm run setGit && npm publish"
   },
   "repository": {
     "type": "git",

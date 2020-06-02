@@ -372,7 +372,7 @@
 	############ASYNC##############
 	###############################
 	*/
-	prt.version = "0.0.9";
+	prt.version = "0.0.10";
 	prt.skipFrames = function(nFrames,argObj,parent,catcher,_breaker){
 		_breaker = breaker || _breaker || {value:false};
 		nFrames = nFrames instanceof this.skipFrames.Timer ? nFrames : new this.skipFrames.Timer(nFrames);

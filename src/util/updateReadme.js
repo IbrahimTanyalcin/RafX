@@ -23,7 +23,7 @@
 				var i = 0,
 					j = 0,
 					line = null,
-					rgxStart = new RegExp("^(\\s*?)" + search, "i"),
+					rgxStart = new RegExp("^(\\s*?)" + search + "[^A-Z]+", "i"),
 					rgxEnd = null,
 					l = dataDistLines.length,
 					result = "#"; 

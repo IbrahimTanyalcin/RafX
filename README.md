@@ -36,12 +36,12 @@ npm install rafx
 ##### specific version
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/rafx@0.0.9/dist/rafx.v0.0.10.dev.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/rafx@0.0.9/dist/rafx.v0.0.11.dev.js"></script>
 ```
 
 #### Distreau
 ```
-<script src="https://distreau.com/rafx/js/rafx.v0.0.10.min.js"></script>
+<script src="https://distreau.com/rafx/js/rafx.v0.0.11.min.js"></script>
 ```
 
 ## Usage
@@ -146,7 +146,7 @@ Follow below examples in order
 
 ## Methods
 
-### *rafx.skipFrames(frameCount[, args])* [<prt.skipFrames>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L376-L387)
+### *rafx.skipFrames(frameCount[, args])* [<prt.skipFrames>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L376-L387)
 <hr>
 Waits a certain amount of frames. If a number is passed, it is assumed to be frame count. For instance a frame count of 15 is approximately 250 ms (1 second ~= 60 frames)
 
@@ -168,7 +168,7 @@ If no arguments are given, `undefined` is passed.
 
 `Thenable`
 
-### *rafx.async(mixed[, args[, thisArg]])* [<prt.async>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L702-L704)
+### *rafx.async(mixed[, args[, thisArg]])* [<prt.async>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L702-L704)
 <hr>
 
 Passes a mixed variable to be used within a `thenable` immediately. If the mixed variable is a function, then that function is executed with `args` and with this pointing to `thisArg`:
@@ -190,7 +190,7 @@ rafx.async("whatever")
 
 `Thenable`
 
-### *thenable.then(function[, args])* [<prt.Thenable.prototype.then>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L404-L425)
+### *thenable.then(function[, args])* [<prt.Thenable.prototype.then>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L404-L425)
 <hr>
 
 Executes the passed function with the arguments given, if any and `this` pointing out to the current thenable. You can return another `thenable` instance, use the observer pattern, or use any other mixed variable (refer to Usage section):
@@ -216,7 +216,7 @@ You can inspect `thenable.status` to receive information about its state which f
 ### *thenable.forceThen(function[, args[, options]])* 
 ### *thenable.force(function[, args[, options]])* 
 ### *thenable.fThen(function[, args[, options]])* 
-### [<prt.Thenable.prototype.fThen>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L430-L466)
+### [<prt.Thenable.prototype.fThen>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L430-L466)
 <hr>
 
 Executes the passed function with the arguments given, if any and `this` pointing out to the current thenable (the thenable that `force` is called from). You can return another `thenable` instance, use the observer pattern, or use any other mixed variable (refer to Usage section).
@@ -268,7 +268,7 @@ rafx
 
 `Thenable`
 
-### *thenable.filter(function[, args[, options]])* [<prt.Thenable.prototype.filter>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L501-L533)
+### *thenable.filter(function[, args[, options]])* [<prt.Thenable.prototype.filter>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L501-L533)
 <hr>
 
 Executes the passed function with the arguments given, if any and `this` pointing out to the current thenable (the thenable that `filter` is called from). You can return another `thenable` instance, use the observer pattern, or use any other mixed variable (refer to Usage section). If the function returns truthy, then rest of the `thenable` chain is executed, being passed the last return value immediately upstream of the filter clause, otherwise silently fails.
@@ -322,13 +322,13 @@ rafx
     });
 ```
 
-Filter does not throw by default, but if you attach a catch clause as shown above, if any `options` argument is present, it will be populated with an `error` property. [<>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L529)
+Filter does not throw by default, but if you attach a catch clause as shown above, if any `options` argument is present, it will be populated with an `error` property. [<>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L529)
 
 #### Returns
 
 `Thenable`
 
-### *thenable.toBool(function[, args[, options]])* [<prt.Thenable.prototype.toBool>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L473-L499)
+### *thenable.toBool(function[, args[, options]])* [<prt.Thenable.prototype.toBool>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L473-L499)
 <hr>
 
 Executes the passed function with the arguments given, if any and `this` pointing out to the current thenable (the thenable that `toBool` is called from). You can return another `thenable` instance, use the observer pattern, or use any other mixed variable (refer to Usage section):
@@ -353,8 +353,8 @@ Similar to `filter`, `force` or other clauses, it can receive an options object 
 
 `Thenable`
 
-### *thenable.ifTruthy(function[, args[, options]])* [<prt.Thenable.prototype.ifTruthy>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L535-L544)
-### *thenable.ifFalsey(function[, args[, options]])* [<prt.Thenable.prototype.ifFalsey>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L545-L554)
+### *thenable.ifTruthy(function[, args[, options]])* [<prt.Thenable.prototype.ifTruthy>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L535-L544)
+### *thenable.ifFalsey(function[, args[, options]])* [<prt.Thenable.prototype.ifFalsey>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L545-L554)
 <hr>
 
 Similar to `filter`. Recevies the same arguments.
@@ -413,7 +413,7 @@ rafx
 ### *thenable.recurse(function[, args])* 
 ### *thenable.loop(function[, args])* 
 ### *thenable.do(function[, args])* 
-### [<prt.Thenable.prototype.recurse>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L597-L602)
+### [<prt.Thenable.prototype.recurse>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L597-L602)
 <hr>
 
 Executues the following function and the arguments if any, with `this` pointing out to the current thenable (the thenable that `recurse` is called from)
@@ -449,7 +449,7 @@ Do not use `recurse` with animations, because `recurse` is aware of what is retu
 
 ### *thenable.animate(function[, args])* 
 ### *thenable.recurseShallow(function[, args])*  
-### [<prt.Thenable.prototype.animate>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L603-L610)
+### [<prt.Thenable.prototype.animate>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L643-L648)
 <hr>
 
 Executues the following function and the arguments if any, with `this` pointing out to the current thenable (the thenable that `animate` is called from)
@@ -482,7 +482,7 @@ Do not return a `thenable` inside an `animate` clause, only use ordinary objects
 
 `Untillable`
 
-### *rafx.repeat(function[, args[, options]])* [<prt.repeat>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L705-L747)
+### *rafx.repeat(function[, args[, options]])* [<prt.repeat>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L705-L747)
 <hr>
 
 Creates a repeating function that can be controlled via a `controller`. The options argument can contain 3 fields, `throw`, `handler` and `thisArg`. All are optional.
@@ -536,7 +536,7 @@ Above has the same effect as calling `ctrl.kill`, if no handler is specified, th
 
 An id `string`
 
-### *rafx.throttle(function[, args[, numberFrames]])* [<prt.throttle>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L813-L823)
+### *rafx.throttle(function[, args[, numberFrames]])* [<prt.throttle>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L813-L823)
 <hr>
 
 Creates a throttled function that fires maximum once every `numberFrames`:
@@ -555,7 +555,7 @@ Above function can fire at most once every 5 frames, which is about 83ms.
 
 `function`
 
-### *rafx.isInView(node[, numberFrames])* [<prt.isInView>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L798-L812)
+### *rafx.isInView(node[, numberFrames])* [<prt.isInView>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L798-L812)
 <hr>
 
 Returns whether a node with `nodeType` === 1 (HTMLElement) is visible once every `numberFrames`:
@@ -570,7 +570,7 @@ Above will return `boolean` at most once every 5 frames, which is about 83ms.
 
 `boolean`
 
-### *rafx.ifInView(node[, numberFrames])* [<prt.ifInView>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L649-L651)
+### *rafx.ifInView(node[, numberFrames])* [<prt.ifInView>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L649-L651)
 <hr>
 
 Built on top of `isInView`, returns a `thenable` that will execute based on whether a node with `nodeType` === 1 (HTMLElement) is visible. The result will be refreshed after `numberFrames`:
@@ -592,7 +592,7 @@ Above `thenable` will execute if the element is in view. Calling `rafx.ifInView(
 
 `Thenable`
 
-### *rafx.ifNotInView(node[, numberFrames])* [<prt.ifNotInView>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L652-L654)
+### *rafx.ifNotInView(node[, numberFrames])* [<prt.ifNotInView>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L652-L654)
 <hr>
 
 Built on top of `isInView`, returns a `thenable` that will execute based on whether a node with `nodeType` === 1 (HTMLElement) is NOT visible. The result will be refreshed after `numberFrames`:
@@ -614,7 +614,7 @@ Above `thenable` will execute if the element is NOT in view. Calling `rafx.ifNot
 
 `Thenable`
 
-### *thenable.break()* [<prt.Thenable.prototype.break>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L426-L429)
+### *thenable.break()* [<prt.Thenable.prototype.break>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L426-L429)
 <hr>
 
 Breaks the  current thenable and all upstream/parent thenables. Use this if you want to cancel execution.
@@ -643,7 +643,7 @@ const outer = rafx
 
 `Thenable`
 
-### *thenable.catch(function)* [<prt.Thenable.prototype.catch>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.10.dev.js#L655-L660)
+### *thenable.catch(function)* [<prt.Thenable.prototype.catch>](https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v0.0.11.dev.js#L655-L660)
 <hr>
 
 Many clauses in RafX do not throw by default and silently fail when their conditions are not met.

@@ -1,8 +1,8 @@
 {
   "name": "rafx",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "RequestAnimationFrame (rAF) Based Promise-Like Implementation",
-  "main": "./dist/rafx.v0.0.12.min.js",
+  "main": "./dist/rafx.v0.0.13.min.js",
   "scripts": {
     "min": "cross-env-shell uglifyjs ./dist/rafx.v${npm_package_version}.dev.js -o ./dist/rafx.v${npm_package_version}.min.js",
     "testLintBand": "cross-env-shell RAFX_TYPE=lint jest --runInBand",
@@ -22,6 +22,7 @@
     "updatePerf": "cross-env-shell CUSTOM_LOC=./src/perf/ node ./src/util/updatePerf.js",
     "updateReadme": "cross-env-shell CUSTOM_LOC=./ node ./src/util/updateReadme.js",
     "backUpFiles": "cross-env-shell CUSTOM_LOC=./dist/ CUSTOM_DEST=./olderVersions node ./src/util/backUpFiles.js",
+    "copyDev": "cross-env-shell CUSTOM_LOC=./dev/ CUSTOM_DEST=./dist node ./src/util/copyDev.js",
     "cleanUp": "cross-env-shell CUSTOM_LOC=./dist/ node ./src/util/cleanUp.js",
     "bumpPatch": "cross-env-shell npm version patch -no-git-tag-version --force",
     "gitCommit": "cross-env-shell git commit -m ${npm_package_version}",
@@ -30,7 +31,7 @@
     "gitPush": "git push",
     "gitPushTags": "git push --tags",
     "setGit": "npm run gitAddAll && npm run gitCommit && npm run gitTag && npm run gitPush && npm run gitPushTags",
-    "publishPatch": "npm run bumpPatch && npm run backUpFiles && npm run cleanUp && npm run updateMain && npm run min && npm run updatePckgJSON && npm run updatePerf && npm run updateReadme && npm run setGit && npm publish"
+    "publishPatch": "npm run bumpPatch && npm run backUpFiles && npm run cleanUp && npm run copyDev && npm run updateMain && npm run min && npm run updatePckgJSON && npm run updatePerf && npm run updateReadme && npm run setGit && npm publish"
   },
   "repository": {
     "type": "git",

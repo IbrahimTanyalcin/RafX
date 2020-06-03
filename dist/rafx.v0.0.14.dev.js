@@ -7,7 +7,6 @@
 		root.rafx = factory();
 	}
 }(this, function(){
-	window = window || global;
 	/*
 	###############################
 	###########INTERNALS###########
@@ -25,7 +24,8 @@
 			}
 		);
 	};
-	var prt = Rafx.prototype,
+	var window = this,
+		prt = Rafx.prototype,
 		rAF = window.requestAnimationFrame || function(f){return setTimeout(f, 17);},
 		generateRandomString = function(){
 			return (Math.random()*1e9 | 0).toString(16);
@@ -373,7 +373,7 @@
 	############ASYNC##############
 	###############################
 	*/
-	prt.version = "0.0.13";
+	prt.version = "0.0.14";
 	prt.skipFrames = function(nFrames,argObj,parent,catcher,_breaker){
 		_breaker = breaker || _breaker || {value:false};
 		nFrames = nFrames instanceof this.skipFrames.Timer ? nFrames : new this.skipFrames.Timer(nFrames);

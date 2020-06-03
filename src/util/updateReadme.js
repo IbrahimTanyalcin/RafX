@@ -4,7 +4,7 @@
 		LOCATION = process.env.CUSTOM_LOC,
 		lRgx = /rafx\.v(?:[0-9]+\.){3}(dev|min)\.js/gi,
 		lRgxDev = /rafx\.v(?:[0-9]+\.){3}dev\.js/i,
-		linkRgx = /\[<(.+?)>\]\s*?\((https:[^#)]*?)(?:#L[0-9]+\-L[0-9]+)?\)/gi,
+		linkRgx = /\[\\?<(.+?)\\?>\]\s*?\((https:[^#)]*?)(?:#L[0-9]+\-L[0-9]+)?\)/gi,
 		fs = require('fs'),
 		path = require('path'),
 		files = fs.readdirSync(LOCATION).filter(fName => fName.toLowerCase() === "readme.md"),
@@ -26,13 +26,13 @@
 					rgxStart = new RegExp("^(\\s*?)" + search + "[^A-Z]+", "i"),
 					rgxEnd = null,
 					l = dataDistLines.length,
-					result = "#"; 
+					result = ""; 
 				i < l;
 				++i
 			){
 				line = dataDistLines[i];
 				if(rgxStart.test(line)){
-					result += "L" + (i + 1) + "-";
+					result += "#L" + (i + 1) + "-";
 					rgxEnd = new RegExp("^" + line.match(rgxStart)[1] + "\\}", "i");
 					for (j = i + 1; j < l; ++j) {
 						line = dataDistLines[j];
@@ -53,7 +53,7 @@
 			link === https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v1.1.1.dev.js
 		*/
 		var hash = getLines(search);
-		return "[<" + search + ">](" + link + hash + ")";
+		return "[\\<" + search + "\\>](" + link + hash + ")";
 	});
 	fs.writeFileSync(file,data);
 }();

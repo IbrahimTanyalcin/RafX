@@ -375,7 +375,7 @@
 	*/
 	prt.version = "0.0.17";
 	prt.skipFrames = function(nFrames,argObj,parent,catcher,_breaker){
-		_breaker = breaker || _breaker || {value:false};
+		_breaker = _breaker || breaker || {value:false};
 		nFrames = nFrames instanceof this.skipFrames.Timer ? nFrames : new this.skipFrames.Timer(nFrames);
 		var that = this,
 			argObj = typeof argObj !== "object" 

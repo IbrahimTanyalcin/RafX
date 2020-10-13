@@ -69,3 +69,6 @@ olderTests/
 dev/
 junk/
 src/game/
+
+#Thumbs.db on windows
+Thumbs.db

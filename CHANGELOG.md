@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.0.20
+- Updated `src/util/updateReadme.js` to correctly point to links for jsdelivr packages
+
 ## 0.0.19
 - Migrate to [travis-ci.com](https://app.travis-ci.com/github/IbrahimTanyalcin/RafX) and bump patch to trigger build.
 

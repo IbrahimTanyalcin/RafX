@@ -3,6 +3,7 @@
 	var VERSION = process.env.npm_package_version,
 		LOCATION = process.env.CUSTOM_LOC,
 		lRgx = /rafx\.v(?:[0-9]+\.){3}(dev|min)\.js/gi,
+		jsdelivrRgx = /rafx@(?:[0-9]+\.){2}[0-9]+/gi,
 		lRgxDev = /rafx\.v(?:[0-9]+\.){3}dev\.js/i,
 		linkRgx = /\[\\?<(.+?)\\?>\]\s*?\((https:[^#)]*?)(?:#L[0-9]+\-L[0-9]+)?\)/gi,
 		fs = require('fs'),
@@ -46,8 +47,9 @@
 			}
 			return result;
 		};
-	data = data.replace(lRgx,function(m, g1, o, s){return "rafx.v" + VERSION + "." + g1 + ".js"});
-	data = data.replace(linkRgx,function(m, search, link, o, s){
+	data = data.replace(lRgx,function(m, g1, o, s){return "rafx.v" + VERSION + "." + g1 + ".js"})
+	.replace(jsdelivrRgx,function(m, o, s){return "rafx@" + VERSION})
+	.replace(linkRgx,function(m, search, link, o, s){
 		/*
 			search === prt.async
 			link === https://github.com/IbrahimTanyalcin/RafX/blob/master/dist/rafx.v1.1.1.dev.js
